@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta name="viewport" content="width=device-width" 
+charset="UTF-8" initial-scale="1.0">
+  <head>
+    <title> Bouncing Balls Demo 2023-07-02 </title>
+    <!-- Help with code from w3schools.com and: https://youtu.be/21IX7_xfTms-->
+    <!-- and https://www.programiz.com/javascript/constructor-function -->
+  <style>
+    body {
+        font-size: 1em;
+        background-color: black;
+        color:#d3d3d3}
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    tr {}
+  </style>
+
+  </head>
+  <body>
+
+    <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;">
+        Your browser does not support canvas element.
+    </canvas>
+
+    <table>
+        <tr>
+            <td>Ball Color: <input type="text" id="ball-color"></td>
+            <td>Radius: <input type="text" id="ball-radius"></td>
+        </tr>
+        <tr>
+            <td>Horizontal Speed: <input type="text" id="xSpeed"></td>
+            <td>Vertical Speed: <input type="text" id="ySpeed"></td>
+        </tr>
+        <tr>
+            <td><button onclick="addBall();">Add Ball</button>
+                <button onclick="removeBall();">Remove Ball</button>
+                <button onclick="stopBalls();">Stop</button>
+                <button onclick="startBalls();">Restart</button></td>
+        </tr>
+    </table>
+      
+<script>
+    
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    var canvasWidth = canvas.width;
+    var canvasHeight = canvas.height;
+
+    var yCenter = canvas.height / 2;
+    console.log("yCenter= ", yCenter);
+    var xCenter = canvas.width / 2;
+    console.log("xCenter= ", xCenter);
+
+    var intervalLength = 50;
+
+    console.log("canvasWidth= ", canvasWidth);
+    console.log("canvasHeight= ", canvasHeight);
+
+    // constructor function
+    function Ball(color, x, y, radius, xDelta, yDelta, context, canvas) {
+        this.color        = color,
+        this.x            = x,
+        this.y            = y,
+        this.r            = radius;
+        this.xDelta       = xDelta,
+        this.yDelta       = yDelta,        
+        this.startAngle   = 0,
+        this.endAngle     = 2*Math.PI,
+        this.context      = context,
+        this.canvas       = canvas,
+        this.canvasLeft   = 0 + this.r;
+        this.canvasRight  = canvas.width - this.r;
+        this.canvasTop    = 0 + this.r;
+        this.canvasBottom = canvas.height - this.r;
+
+        this.draw = function() {
+            
+            context.fillStyle= color;
+            context.beginPath();
+            context.arc(this.x, this.y, this.r, this.startAngle, this.endAngle);
+            context.closePath();
+            context.fill();
+        }
+
+        this.move = function() {
+            if (this.x <= this.canvasLeft || this.x >= this.canvasRight)
+                this.xDelta = this.xDelta * -1;
+
+            if (this.y <= this.canvasTop || this.y >= this.canvasBottom)
+                this.yDelta = this.yDelta * -1;
+            
+            this.x = this.x + this.xDelta;
+            this.y = this.y + this.yDelta;
+        }
+
+    }
+    
+    let balls = [new Ball("red", xCenter, yCenter, 20, 15, 20, context, canvas)];
+
+    function addBall(){
+        let ballColor = document.getElementById("ball-color").value;
+        let ballRadius = parseInt(document.getElementById("ball-radius").value);
+        let xSpeed = parseInt(document.getElementById("xSpeed").value);
+        let ySpeed = parseInt(document.getElementById("ySpeed").value);
+        console.log("New ball");
+        console.log("color=       ", ballColor);
+        console.log("x=           ", xCenter);
+        console.log("y=           ", yCenter);
+        console.log("radius=      ", ballRadius);
+        console.log("horiz speed= ", xSpeed);
+        console.log("verti speed= ", ySpeed);
+        balls.push(new Ball(ballColor, xCenter, yCenter, ballRadius, xSpeed, ySpeed, context, canvas));
+    }
+
+    function removeBall(){
+        balls.pop();
+    }
+
+
+    function moveBalls(){
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        balls.forEach((ball, index) => {
+          balls[index].draw();
+          balls[index].move();
+        });
+
+
+        console.log("move a step");
+    }
+
+
+    // myInterval = setInterval(moveBalls, intervalLength);
+
+    function startBalls(){
+        myInterval = setInterval(moveBalls, intervalLength);
+    }
+
+    function stopBalls(){
+        clearInterval(myInterval);
+    }
+
+
+    </script>
+
+  </body>
+</html>
