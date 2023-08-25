@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width" 
 charset="UTF-8" initial-scale="1.0">
   <head>
-    <title> Bouncing Balls Demo 2023-07-02 </title>
+    <title> Bouncing Balls Demo 2023-08-24 </title>
     <!-- Help with code from w3schools.com and: https://youtu.be/21IX7_xfTms-->
     <!-- and https://www.programiz.com/javascript/constructor-function -->
   <style>
@@ -29,6 +29,10 @@ charset="UTF-8" initial-scale="1.0">
         <tr>
             <td>Ball Color: <input type="text" id="ball-color"></td>
             <td>Radius: <input type="text" id="ball-radius"></td>
+        </tr>
+        <tr>
+            <td>x Position: <input type="text" id="xPosition"></td>
+            <td>y Position: <input type="text" id="yPosition"></td>
         </tr>
         <tr>
             <td>Horizontal Speed: <input type="text" id="xSpeed"></td>
@@ -103,12 +107,14 @@ charset="UTF-8" initial-scale="1.0">
     function addBall(){
         let ballColor = document.getElementById("ball-color").value;
         let ballRadius = parseInt(document.getElementById("ball-radius").value);
+        let xStart = parseInt(document.getElementById("xPosition").value);
+        let yStart = parseInt(document.getElementById("yPosition").value);
         let xSpeed = parseInt(document.getElementById("xSpeed").value);
         let ySpeed = parseInt(document.getElementById("ySpeed").value);
         console.log("New ball");
         console.log("color=       ", ballColor);
-        console.log("x=           ", xCenter);
-        console.log("y=           ", yCenter);
+        console.log("x=           ", xStart);
+        console.log("y=           ", yStart);
         console.log("radius=      ", ballRadius);
         console.log("horiz speed= ", xSpeed);
         console.log("verti speed= ", ySpeed);
