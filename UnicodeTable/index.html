@@ -1,1 +1,89 @@
+﻿<!DOCTYPE html>
 
+<html lang="en" manifest="UnicodeTable.appcache">
+
+  <meta name="viewport" content="width=device-width" 
+charset="UTF-8" initial-scale="1.0">
+  <head>
+    <title>Unicode Table Generator</title>
+    <style>
+      body {
+        font-size: 2.0em;
+      }
+      .button {
+        font-size: 1.0em;
+      }
+      .textfield {
+        font-size: 1.0em;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      table {
+        width: 20em;
+      }
+    </style>
+    <script>
+
+      function generateTable() {
+        let a = parseInt(document.getElementById("start").value);
+        let z = parseInt(document.getElementById("stop" ).value);
+        let outputHTML = "";
+
+        outputHTML +="<table>";
+
+        outputHTML +="<tr> <th>Decimal</th> <th>Hex</th> <th>Character</th> </tr>";
+
+        if (a > z) {
+          let c = a;
+          a = z;
+          z = c;
+        }
+
+
+        console.log("a is: " + a);
+        console.log("z is: " + z);
+
+
+        console.log("output from " + a + " to " + z);
+        
+          
+
+        for(let i = a; i <= z; i++){
+
+          let hexStr = i.toString(16);
+
+          outputHTML += "<tr> <td>" + i + "</td> " +
+          "<td>" + hexStr + "</td>" +
+          " <td> &#" + i + "; </td> </tr>"; 
+
+        }         
+
+        outputHTML +="</table>";
+
+        document.getElementById("output").innerHTML = outputHTML;
+
+      }
+      
+      
+    </script>
+  </head>
+  <body>
+    <h1>Unicode Table Generator</h1>
+
+    <p>
+      Start: <input class="textfield" type="text" id="start" value="65"> <br>
+      Stop:  <input class="textfield" type="text" id="stop" value="90">
+    </p>
+
+    <p>
+      <button class="button" onclick="generateTable()"> Find </button>
+    </p>
+    
+<p id="output">Output</p>
+
+    
+  </body>
+</html>
