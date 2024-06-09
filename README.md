@@ -1,11 +1,8 @@
-# bouncing-balls
+# UnicodeTable
 
-## Simple Demo of Bouncing Balls using HTML Canvas and JavaScript
-
-
-This Demo displays uses HTML Canvas and JS to display balls bouncing on the screen.
-It starts with one bouncing ball and allows the user to ADD a ball by typing in the
-color, radius, and x and y speed of the new ball and pressing the ADD button. The
-user can also REMOVE the last ball, PAUSE the animation, and RESTART it.
+## Generate a table of Unicode Characters based on their decimal/hexidecimal code-point values.
 
 
+This web-app allows a user to enter a start and end value and will generate a table of Unicode Charaters for that range of code-point values.
+The table will show both decimal and hexadecimal values along with the Unicode Character for each.
+The web-app is written in HTML and JavaScript
