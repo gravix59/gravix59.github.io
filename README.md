@@ -8,7 +8,7 @@ The table will show both decimal and hexadecimal values along with the Unicode C
 The web-app is written in HTML and JavaScript
 
 | Decimal | Hex | Character |
-|---------|-----|-----------|
+|:-------:|:---:|:---------:|
 |    65   |  41 |     A     |
 |    66   |  42 |     B     |
 |    67   |  43 |     C     |
