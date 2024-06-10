@@ -7,6 +7,8 @@ This web-app allows a user to enter a start and end value and will generate a ta
 The table will show both decimal and hexadecimal values along with the Unicode Character for each.
 The web-app is written in HTML and JavaScript
 
+Sample Output:
+
 | Decimal | Hex | Character |
 |:-------:|:---:|:---------:|
 |    65   |  41 |     A     |
