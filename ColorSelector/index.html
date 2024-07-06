@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <meta name="viewport" content="width=device-width" 
+charset="UTF-8" initial-scale="1.0">
+  <head>
+    <style>
+        body {
+            font-size: 1.0em;
+        }
+        .button {
+            font-size: 1.0em;
+        }
+        .textfield {
+            font-size: 1.0em;
+        }
+        .output {
+            font-size: 2.0em;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
+    <script>
+        function updateHTML(){
+
+            let bgcolor  = (document.getElementById("color-background").value);
+            let txtcolor = (document.getElementById("color-text").value);
+
+            document.getElementById("mytext").style.backgroundColor = bgcolor;
+            document.getElementById("mytext").style.color = txtcolor;
+        }
+
+        function updateText(){
+            let newRed = parseInt(document.getElementById("text-red").value).toString(16).padStart(2,'0')
+            let newGreen = parseInt(document.getElementById("text-green").value).toString(16).padStart(2, '0')
+            let newBlue = parseInt(document.getElementById("text-blue").value).toString(16).padStart(2, '0')
+
+            document.getElementById("color-text").value = "#" + newRed + newGreen + newBlue
+        
+            return updateHTML()
+        }
+
+        function updateBackground(){
+            let newRed = parseInt(document.getElementById("bg-red").value).toString(16).padStart(2, '0')
+            let newGreen = parseInt(document.getElementById("bg-green").value).toString(16).padStart(2, '0')
+            let newBlue = parseInt(document.getElementById("bg-blue").value).toString(16).padStart(2, '0')
+
+            document.getElementById("color-background").value = "#" + newRed + newGreen + newBlue
+            
+            return updateHTML()
+        }
+    </script>
+  </head>
+
+  <body onload="updateBackground(); updateText()">
+    <p id="mytext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut diam ut metus placerat blandit. Ut sit amet euismod odio. Integer eu ultrices massa, pharetra mollis dui. Cras vel dapibus odio, eget commodo sapien. Donec et augue at ipsum molestie ultrices. Aliquam ac tristique felis. Phasellus accumsan dignissim nibh, vel ultrices massa dictum hendrerit. Cras ultricies pellentesque nisl, eu condimentum libero pharetra a. Maecenas a nunc eu lacus eleifend pharetra id gravida lectus. Sed dapibus pellentesque felis eget convallis.
+
+        Mauris lacinia malesuada convallis. Nullam scelerisque, tellus in rhoncus bibendum, nulla purus condimentum augue, at molestie odio lacus vitae ante. Vivamus volutpat non diam vitae sagittis. Proin placerat arcu at nisl iaculis tincidunt. Suspendisse dolor ipsum, imperdiet vel tempus ut, aliquam nec est. In hac habitasse platea dictumst. Cras molestie dolor nec laoreet molestie.
+    </p>
+
+    <p>
+        Text: <input class="textfield" type="text" maxlength="10" size="10" id="color-text" value="#ffffff"><br>
+        Background: <input class="textfield" type="text" maxlength="10" size="10" id="color-background" value="#000000">
+    </p>
+    <div class="slidecontainer">
+        <table>
+        <tr><th colspan="2">Text</th></tr>
+        <tr><td>Red:</td><td><input type="range" min="0" max="255" value="255" step="1" onchange="updateText()" id="text-red"></td></tr>
+        <tr><td>Green:</td><td><input type="range" min="0" max="255" value="255" step="1" onchange="updateText()" id="text-green"></td></tr>
+        <tr><td>Blue:</td><td><input type="range" min="0" max="255" value="255" step="1" onchange="updateText()" id="text-blue"></td></tr>
+        </table>
+        <br>
+
+        <table>
+            <tr><th colspan="2">Background</th></tr>
+            <tr><td>Red:</td><td><input type="range" min="0" max="255" value="0" step="1" onchange="updateBackground()" id="bg-red"></td></tr>
+            <tr><td>Green:</td><td><input type="range" min="0" max="255" value="0" step="1" onchange="updateBackground()" id="bg-green"></td></tr>
+            <tr><td>Blue:</td><td><input type="range" min="0" max="255" value="0" step="1" onchange="updateBackground()" id="bg-blue"></td></tr>
+            </table>
+        
+    </div>
+    <p>
+        <button class="button" onclick="updateHTML()">Update Color</button>
+    </p>
+
+
+
+  </body>
+</html>
