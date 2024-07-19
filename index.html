@@ -6,6 +6,7 @@ charset="UTF-8" initial-scale="1.0">
     <title> Bouncing Balls Demo 2023-08-24 </title>
     <!-- Help with code from w3schools.com and: https://youtu.be/21IX7_xfTms-->
     <!-- and https://www.programiz.com/javascript/constructor-function -->
+    <!-- updated with code from https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window -->
   <style>
     html, body {
       width:  100%;
@@ -19,6 +20,11 @@ charset="UTF-8" initial-scale="1.0">
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
+    }
+    canvas {
+      width:  100%;
+      height: 100%;
+      display: block;
     }
     tr {}
   </style>
@@ -70,6 +76,7 @@ charset="UTF-8" initial-scale="1.0">
     console.log("canvasWidth= ", canvasWidth);
     console.log("canvasHeight= ", canvasHeight);
 
+  
     // constructor function
     function Ball(color, x, y, radius, xDelta, yDelta, context, canvas) {
         this.color        = color,
