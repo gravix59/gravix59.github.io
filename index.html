@@ -7,6 +7,11 @@ charset="UTF-8" initial-scale="1.0">
     <!-- Help with code from w3schools.com and: https://youtu.be/21IX7_xfTms-->
     <!-- and https://www.programiz.com/javascript/constructor-function -->
   <style>
+    html, body {
+      width:  100%;
+      height: 100%;
+      margin: 0;
+    }
     body {
         font-size: 1em;
         background-color: black;
@@ -50,6 +55,8 @@ charset="UTF-8" initial-scale="1.0">
     
     var canvas = document.getElementById("myCanvas");
     var context = canvas.getContext("2d");
+    context.canvas.width = window.innerWidth;
+    context.canvas.height = window.innerHeight;
     var canvasWidth = canvas.width;
     var canvasHeight = canvas.height;
 
